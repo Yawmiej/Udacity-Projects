@@ -1,27 +1,20 @@
-// Select color input
-// Select size input
-const table = document.querySelector('#pixelCanvas');
-const color = document.querySelector('#colorPicker');
-const tableWidth = document.querySelector('#inputWidth');
-const tableHeight = document.querySelector('#inputHeight');
-console.log(color.value, tableHeight.value, tableWidth.value);
-let td = document.getElementById('td');
-// When size is submitted by the user, call makeGrid()
+function makeGrid(r,c){
+    const table = document.querySelector('#pixelCanvas');
+}
+function appe(){
+    const table = document.querySelector('#pixelCanvas');
+    let trow = document.createElement('tr');
+    trow.setAttribute('id', 'table-row');
+    let tcol = document.createElement('td');
+    table.append(trow);
+    document.querySelector('#table-row').append(tcol);
 
-function makeGrid() {
-    let rowHtml = '<tr><td id="td"></td></tr>';
-    table.innerHTML = rowHtml;
-    td.backgroundColor = color.value;
-// Your code goes here!
-    return false;
 }
 
-let submit = document.querySelector('#submit');
-submit.addEventListener('click', makeGrid);
-
-
-if(td){
-    td.addEventListener('click', function(){
-        td.backgroundColor = color.value;
-    });
-}
+const submit = document.querySelector("#submit");
+submit.addEventListener('click', function(event){
+    const row = document.querySelector('#inputWidth').value;
+    const column = document.querySelector('#inputHeight').value;
+    makeGrid(row, column);
+    event.preventDefault();
+});
