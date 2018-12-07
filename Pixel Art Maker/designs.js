@@ -1,5 +1,6 @@
+// Creates the Grid of tables in rows and columns
+// deletes any existing grid
 const table = document.querySelector('#pixelCanvas');
-
 function makeGrid(r = 1,c = 1){
     let oldRow = document.querySelectorAll('tr');
     for (let n = 0; n < oldRow.length; n++ ) {
@@ -17,17 +18,17 @@ function makeGrid(r = 1,c = 1){
     }
 }
 
+// Submit event addEventListener, calls the makeGrid function 
+// on clicking the submit button
 const submit = document.querySelector("#submit");
 submit.addEventListener('click', function(event){
     let row = document.querySelector('#inputWidth').value;
     let column = document.querySelector('#inputHeight').value;
     makeGrid(row, column);
-    row = 1;
-    column = 1;
     event.preventDefault();
 });
 
-
+// Color changer event Listener, adds selected color to the grid when clicked
 table.addEventListener('click', function(event){
     let cell = document.querySelectorAll('td');
     let color = document.querySelector('#colorPicker').value;
