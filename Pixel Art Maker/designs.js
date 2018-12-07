@@ -28,6 +28,17 @@ submit.addEventListener('click', function(event){
 });
 
 
-table.addEventListener('click', function(){
-
-})
+table.addEventListener('click', function(event){
+    let cell = document.querySelectorAll('td');
+    let color = document.querySelector('#colorPicker').value;
+    for (let i = 0; i < cell.length; i++ ) {
+        if(event.target == cell[i]) {
+            if (cell[i].hasAttribute('style') ){
+                cell[i].removeAttribute('style');
+            } else{
+            cell[i].style.backgroundColor = color;
+            }
+        }
+    }
+    
+});
