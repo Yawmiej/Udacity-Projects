@@ -35,7 +35,8 @@ let paint = (event) => {
     let cells = document.querySelectorAll('td');
     let color = document.querySelector('#colorPicker').value;
     for (let cell of cells ) {
-        if((event.target === cell && event.keyCode === 13)) {
+        if((event.target === cell && event.keyCode === 13) || 
+        (event.target === cell && event.type === 'click')) {
             if (cell.hasAttribute('style') ){
                 cell.removeAttribute('style');
             } else{
