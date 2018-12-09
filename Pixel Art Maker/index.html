@@ -6,21 +6,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Pixel Art Maker</h1>
+    <h1 tabindex="0" aria-label="Pixel Art Maker">Pixel Art Maker</h1>
 
-    <h2>Choose Grid Size</h2>
+    <h2 tabindex="0" arial-label="Choose pixel grid size">Choose Grid Size</h2>
     <form id="sizePicker">
-        Grid Height:
-        <input type="number" id="inputHeight" name="height" min="1" value="1">
-        Grid Width:
-        <input type="number" id="inputWidth" name="width" min="1" value="1">
-        <button type="button" id="submit">submit</button>
+        <label for="inputHeight">Grid Height:</label>
+        <input type="number" id="inputHeight" name="height" min="1" value="1" aria-label="set grid height">
+        <label for="inputWidth">Grid Width:</label>
+        <input type="number" id="inputWidth" name="width" min="1" value="1" aria-label="set grid width">
+        <button type="button" id="submit" aria-label="Create grid">Create Grid</button>
     </form>
 
     <h2>Pick A Color</h2>
-    <input type="color" id="colorPicker">
+    <input type="color" id="colorPicker" aria-label="pick a color">
 
-    <h2>Design Canvas</h2>
+    <h2 aria-label="Design Canvas" tabindex="0">Design Canvas</h2>
     <table id="pixelCanvas"></table>
 
     <script src="designs.js"></script>

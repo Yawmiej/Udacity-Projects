@@ -13,6 +13,8 @@ let makeGrid = (r = 1,c = 1) => {
         table.append(trow);
         for (let j = 1; j <= c; j++) {
             let tcol = document.createElement('td');
+            tcol.setAttribute('tabIndex', '0');
+            tcol.setAttribute('aria-label', `row ${i}, column ${j}`);
             document.querySelector(`#table-row${i}`).append(tcol);
         }
     }
@@ -29,17 +31,19 @@ submit.addEventListener('click', (event) => {
 });
 
 // Color changer event Listener, adds selected color to the grid when clicked
-table.addEventListener('click', (event) => {
+let paint = (event) => {
     let cells = document.querySelectorAll('td');
     let color = document.querySelector('#colorPicker').value;
     for (let cell of cells ) {
-        if(event.target == cell) {
+        if((event.target === cell && event.keyCode === 13)) {
             if (cell.hasAttribute('style') ){
                 cell.removeAttribute('style');
             } else{
-            cell.style.backgroundColor = color;
+                cell.style.backgroundColor = color;
             }
         }
     }
     
-});
+}
+table.addEventListener('click', paint);
+table.addEventListener('keyup', paint);
