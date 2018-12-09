@@ -1,10 +1,10 @@
 // Creates the Grid of tables in rows and columns
 // deletes any existing grid
 const table = document.querySelector('#pixelCanvas');
-function makeGrid(r = 1,c = 1){
-    let oldRow = document.querySelectorAll('tr');
-    for (let n = 0; n < oldRow.length; n++ ) {
-        oldRow[n].remove();
+let makeGrid = (r = 1,c = 1) => {
+    let oldRows = document.querySelectorAll('tr');
+    for (let oldRow of oldRows) {
+        oldRow.remove();
     }
     for (let i = 1; i <= r; i++) {
         
@@ -21,7 +21,7 @@ function makeGrid(r = 1,c = 1){
 // Submit event addEventListener, calls the makeGrid function 
 // on clicking the submit button
 const submit = document.querySelector("#submit");
-submit.addEventListener('click', function(event){
+submit.addEventListener('click', (event) => {
     let row = document.querySelector('#inputWidth').value;
     let column = document.querySelector('#inputHeight').value;
     makeGrid(row, column);
@@ -29,15 +29,15 @@ submit.addEventListener('click', function(event){
 });
 
 // Color changer event Listener, adds selected color to the grid when clicked
-table.addEventListener('click', function(event){
-    let cell = document.querySelectorAll('td');
+table.addEventListener('click', (event) => {
+    let cells = document.querySelectorAll('td');
     let color = document.querySelector('#colorPicker').value;
-    for (let i = 0; i < cell.length; i++ ) {
-        if(event.target == cell[i]) {
-            if (cell[i].hasAttribute('style') ){
-                cell[i].removeAttribute('style');
+    for (let cell of cells ) {
+        if(event.target == cell) {
+            if (cell.hasAttribute('style') ){
+                cell.removeAttribute('style');
             } else{
-            cell[i].style.backgroundColor = color;
+            cell.style.backgroundColor = color;
             }
         }
     }
