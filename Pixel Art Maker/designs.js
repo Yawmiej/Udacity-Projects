@@ -2,12 +2,8 @@
 // deletes any existing grid
 const table = document.querySelector('#pixelCanvas');
 let makeGrid = (r = 1,c = 1) => {
-    let oldRows = document.querySelectorAll('tr');
-    for (let oldRow of oldRows) {
-        oldRow.remove();
-    }
+    resetGrid();
     for (let i = 1; i <= r; i++) {
-        
         let trow = document.createElement('tr');
         trow.setAttribute('id', `table-row${i}`);
         table.append(trow);
@@ -30,6 +26,16 @@ submit.addEventListener('click', (event) => {
     event.preventDefault();
 });
 
+const resetGrid = () => {
+    let oldRows = document.querySelectorAll('tr');
+    for (let oldRow of oldRows) {
+        oldRow.remove();
+    }
+}
+
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', resetGrid);
+
 // Color changer event Listener, adds selected color to the grid when clicked
 let paint = (event) => {
     let cells = document.querySelectorAll('td');
@@ -44,7 +50,7 @@ let paint = (event) => {
             }
         }
     }
-    
 }
 table.addEventListener('click', paint);
 table.addEventListener('keyup', paint);
+table.addEventListener('mousedown', paint);
