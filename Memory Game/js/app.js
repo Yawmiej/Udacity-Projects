@@ -26,6 +26,15 @@ function shuffle(array) {
 }
 
 
+const cardIcons = ['bolt', 'bicycle', 'diamond', 'paper-plane-o', 'anchor', 'leaf',                      'cube', 'bomb', 'bolt', 'bicycle', 'diamond', 'paper-plane-o',                        'anchor', 'leaf', 'cube', 'bomb'];
+const deck = document.querySelector('.deck');
+let cardHtml = "";
+for (let cardIcon of shuffle(cardIcons)){
+    cardHtml += `<li class='card'><i class='fa fa-${cardIcon}'></i></li>`;
+}
+deck.innerHTML = cardHtml;
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
