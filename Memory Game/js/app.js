@@ -28,11 +28,24 @@ function shuffle(array) {
 
 const cardIcons = ['bolt', 'bicycle', 'diamond', 'paper-plane-o', 'anchor', 'leaf',                      'cube', 'bomb', 'bolt', 'bicycle', 'diamond', 'paper-plane-o',                        'anchor', 'leaf', 'cube', 'bomb'];
 const deck = document.querySelector('.deck');
-let cardHtml = "";
-for (let cardIcon of shuffle(cardIcons)){
-    cardHtml += `<li class='card'><i class='fa fa-${cardIcon}'></i></li>`;
-}
-deck.innerHTML = cardHtml;
+let makeCards = () => {
+    let cardHtml = "";
+    for (let cardIcon of shuffle(cardIcons)){
+        cardHtml += `<li class='card'><i class='fa fa-${cardIcon}'></i></li>`;
+    }
+    deck.innerHTML = cardHtml;
+    console.log(cardHtml);
+};
+makeCards();
+
+deck.addEventListener('click', (evt) => {
+    const cards = document.querySelectorAll('.card');
+    for (let card of cards){
+        if(evt.target === card){
+            card.classList.toggle('open', 'show');
+        }
+    }
+})
 
 
 /*
